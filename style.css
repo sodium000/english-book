@@ -9,3 +9,9 @@
   font-family: "Hind Siliguri", sans-serif;
   font-style: normal;
 }
+
+
+.active{
+  background-color: #5c49d9;
+  color: white;
+}
