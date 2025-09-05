@@ -17,21 +17,30 @@ const desplayLevleWord = (words)=>{
     const wordContainer = document.getElementById("word-container");
     wordContainer.innerHTML="";
 
-    words.forEach(element => {
-
-//         {
-//     "id": 5,
-//     "level": 1,
-//     "word": "Eager",
-//     "meaning": "আগ্রহী",
-//     "pronunciation": "ইগার"
-// }
-
+    if (words.length == 0) {
+        wordContainer.innerHTML=`
+        <div class="text-center mt-15 col-span-full">
+        <img class="mx-auto" src="./assets/alert-error.png">
+        <p class="hind-siliguri-regular text-[13px] text-[#79716B] mb-3">এই Lesson এ এখনো কোন Vocabulary যুক্ত করা হয়নি।</p>
+        <h1 class="hind-siliguri-regular text-[34px] text-[#292524] mb-3">নেক্সট Lesson এ যান</h1>
+    </div>
+        `
+        return;
+    };
+        // {
+        //     "id": 5,
+        //     "level": 1,
+        //     "word": "Eager",
+        //     "meaning": "আগ্রহী",
+        //     "pronunciation": "ইগার"
+        // }
+        
+        words.forEach(element => {
         console.log(element);
         const card = document.createElement("div")
         card.innerHTML = `
             <div class="px-5 py-10 space-y-4 text-center bg-white shadow-sm rounded-xl">
-            <h1 class="text-2xl font-bold">${element.word}</h1>
+            <h1 class="text-2xl font-bold">${element.word ? element.word : "শব্দ পাওয়া যায়নি"}</h1>
             <p class="font-semibold">Meaning/pronounciation</p>
             <div class="text-2xl font-medium hind-siliguri-regular">
                 "${element.meaning} / ${element.pronunciation}"
