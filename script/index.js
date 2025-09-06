@@ -62,7 +62,7 @@ const desplayLevleWord = (words) => {
     }"
             </div>
             <div class="flex items-center justify-between">
-                <button class="btn bg-[#1A91FF15] hover:bg-[#1A91FF80] "><i class="fa-solid fa-circle-info"></i></button>
+                <button onclick="my_modal_5.showModal()" class="btn bg-[#1A91FF15] hover:bg-[#1A91FF80] "><i class="fa-solid fa-circle-info"></i></button>
                 <button class="btn bg-[#1A91FF15] hover:bg-[#1A91FF80]"><i class="fa-solid fa-play"></i></button>
             </div>
         </div>`;
