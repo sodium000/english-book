@@ -20,8 +20,6 @@ const manageSpinner = (status)=>{
 };
 
 
-
-
 const loadLessons = () => {
   fetch("https://openapi.programming-hero.com/api/levels/all")
     .then((response) => response.json())
@@ -46,7 +44,7 @@ const loadLevelWord = (id) => {
         const clickbtn = document.getElementById(`lesson-btn-${id}`)
         clickbtn.classList.add("active")
         desplayLevleWord(word.data)
-         
+      
     });
 };
 
@@ -89,7 +87,7 @@ const displayWordDetails = (wordDetails)=>{
   
   `;
   document.getElementById("my_modal_5").showModal()
-}
+};
 
 const desplayLevleWord = (words) => {
   const wordContainer = document.getElementById("word-container");
@@ -157,3 +155,20 @@ const displayLesson = (lesson) => {
 };
 
 loadLessons();
+
+document.getElementById("btn-search").addEventListener("click",function(){
+  removeActive();
+  const inputField = document.getElementById("input-search");
+  const inputValue = inputField.value.trim().toLowerCase() ;
+
+  fetch("https://openapi.programming-hero.com/api/words/all")
+  .then(res =>res.json())
+  .then(data=>{
+    const allword = data.data;
+    const filterWords = allword.filter(word=>{
+      return (word.word.toLowerCase().includes(inputValue));
+    });
+    desplayLevleWord(filterWords);
+  })
+
+});
