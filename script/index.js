@@ -6,6 +6,12 @@ const createElements = (arr)=>{
       return (htmlElements.join(" "))
 }
 
+function pronounceWord(word) {
+  const utterance = new SpeechSynthesisUtterance(word);
+  utterance.lang = "en-EN"; // English
+  window.speechSynthesis.speak(utterance);
+}
+
 
 const manageSpinner = (status)=>{
   if (status == true) {
@@ -129,7 +135,7 @@ const desplayLevleWord = (words) => {
             </div>
             <div class="flex items-center justify-between">
                 <button onclick="loadWordDetail(${element.id})" class="btn bg-[#1A91FF15] hover:bg-[#1A91FF80] "><i class="fa-solid fa-circle-info"></i></button>
-                <button class="btn bg-[#1A91FF15] hover:bg-[#1A91FF80]"><i class="fa-solid fa-play"></i></button>
+                <button onclick="pronounceWord('${element.word}')" class="btn bg-[#1A91FF15] hover:bg-[#1A91FF80]"><i class="fa-solid fa-play"></i></button>
             </div>
         </div>`;
 
